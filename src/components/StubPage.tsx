@@ -30,7 +30,9 @@ const StubPage = forwardRef<HTMLDivElement, StubPageProps>(({ title, badge = "AR
         </div>
       </div>
     </section>
-  </>
-);
+  </div>
+));
+
+StubPage.displayName = "StubPage";
 
 export default StubPage;
