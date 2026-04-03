@@ -6,10 +6,11 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import Layout from "@/components/Layout";
 import Index from "./pages/Index";
 import AboutPage from "./pages/AboutPage";
+import ServicesPage from "./pages/ServicesPage";
+import ToolsPage from "./pages/ToolsPage";
 import ContactPage from "./pages/ContactPage";
 import StubPage from "@/components/StubPage";
 import NotFound from "./pages/NotFound";
-
 const queryClient = new QueryClient();
 
 const App = () => (
