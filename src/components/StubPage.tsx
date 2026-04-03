@@ -1,3 +1,4 @@
+import { forwardRef } from "react";
 import { Link } from "react-router-dom";
 
 interface StubPageProps {
@@ -6,7 +7,8 @@ interface StubPageProps {
   description?: string;
 }
 
-const StubPage = ({ title, badge = "ARN-345665", description = "This page is under development. Please check back soon." }: StubPageProps) => (
+const StubPage = forwardRef<HTMLDivElement, StubPageProps>(({ title, badge = "ARN-345665", description = "This page is under development. Please check back soon." }, ref) => (
+  <div ref={ref}>
   <>
     <section className="bg-gradient-hero py-20">
       <div className="container text-center">
