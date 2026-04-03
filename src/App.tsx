@@ -9,6 +9,7 @@ import AboutPage from "./pages/AboutPage";
 import ServicesPage from "./pages/ServicesPage";
 import ToolsPage from "./pages/ToolsPage";
 import ContactPage from "./pages/ContactPage";
+import GalleryPage from "./pages/GalleryPage";
 import StubPage from "@/components/StubPage";
 import NotFound from "./pages/NotFound";
 import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
