@@ -1,4 +1,5 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import {
   BarChart3, TrendingUp, Target, Landmark, ArrowUpRight,
@@ -8,8 +9,6 @@ import {
   BarChart, Bar, LineChart, Line, XAxis, YAxis, CartesianGrid,
   Tooltip, ResponsiveContainer, Area, AreaChart, Legend,
 } from "recharts";
-
-const MAX_RETURN = 12;
 
 function formatCurrency(val: number): string {
   if (val >= 10000000) return `₹${(val / 10000000).toFixed(2)} Cr`;
@@ -79,7 +78,7 @@ function SIPCalculator() {
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
       <div>
         <Slider label="Monthly SIP" value={monthly} onChange={setMonthly} min={500} max={200000} step={500} prefix="₹" />
-        <Slider label="Expected Return" value={rate} onChange={setRate} min={1} max={MAX_RETURN} step={0.5} suffix="% p.a." sublabel="Max 12% for illustration" />
+        <Slider label="Expected Return" value={rate} onChange={setRate} min={1} max={30} step={0.5} suffix="% p.a." />
         <Slider label="Investment Period" value={years} onChange={setYears} min={1} max={30} suffix=" years" />
         <div className="grid grid-cols-2 gap-3 mt-4">
           <ResultCard label="Total Invested" value={formatCurrency(final.invested)} />
@@ -124,7 +123,7 @@ function LumpsumCalculator() {
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
       <div>
         <Slider label="Investment Amount" value={amount} onChange={setAmount} min={10000} max={10000000} step={10000} prefix="₹" />
-        <Slider label="Expected Return" value={rate} onChange={setRate} min={1} max={MAX_RETURN} step={0.5} suffix="% p.a." sublabel="Max 12% for illustration" />
+        <Slider label="Expected Return" value={rate} onChange={setRate} min={1} max={30} step={0.5} suffix="% p.a." />
         <Slider label="Investment Period" value={years} onChange={setYears} min={1} max={30} suffix=" years" />
         <div className="grid grid-cols-2 gap-3 mt-4">
           <ResultCard label="Amount Invested" value={formatCurrency(amount)} />
@@ -172,7 +171,7 @@ function GoalCalculator() {
         <Slider label="Target Amount" value={goal} onChange={setGoal} min={100000} max={100000000} step={100000} prefix="₹" />
         <Slider label="Time Horizon" value={years} onChange={setYears} min={1} max={30} suffix=" years" />
         <Slider label="Current Savings" value={current} onChange={setCurrent} min={0} max={10000000} step={10000} prefix="₹" />
-        <Slider label="Expected Return" value={rate} onChange={setRate} min={1} max={MAX_RETURN} step={0.5} suffix="% p.a." sublabel="Max 12% for illustration" />
+        <Slider label="Expected Return" value={rate} onChange={setRate} min={1} max={30} step={0.5} suffix="% p.a." />
         <div className="grid grid-cols-2 gap-3 mt-4">
           <ResultCard label="Required Monthly SIP" value={formatCurrency(result.sipRequired)} />
           <ResultCard label="Or Lumpsum Needed" value={formatCurrency(result.lumpsumRequired)} />
@@ -182,10 +181,10 @@ function GoalCalculator() {
       </div>
       <div className="flex flex-col gap-4">
         {[
-          { icon: GraduationCap, label: "🎓 Education", amount: "₹25L–₹1Cr+" },
-          { icon: Landmark, label: "🌅 Retirement", amount: "₹2Cr–₹10Cr+" },
-          { icon: Home, label: "🏠 Home Purchase", amount: "₹30L–₹2Cr+" },
-          { icon: Target, label: "💍 Marriage", amount: "₹10L–₹50L+" },
+          { icon: GraduationCap, label: "Education", amount: "₹25L–₹1Cr+" },
+          { icon: Landmark, label: "Retirement", amount: "₹2Cr–₹10Cr+" },
+          { icon: Home, label: "Home Purchase", amount: "₹30L–₹2Cr+" },
+          { icon: Target, label: "Marriage", amount: "₹10L–₹50L+" },
         ].map((g) => (
           <div key={g.label} className="flex items-center gap-4 bg-white border border-border rounded-lg p-4 hover:border-gold-400 transition-colors">
             <div className="w-10 h-10 rounded-full bg-gold-100 flex items-center justify-center shrink-0">
@@ -234,7 +233,7 @@ function RetirementCalculator() {
         <Slider label="Current Age" value={age} onChange={setAge} min={18} max={55} suffix=" yrs" />
         <Slider label="Retirement Age" value={retireAge} onChange={setRetireAge} min={Math.max(age + 5, 45)} max={70} suffix=" yrs" />
         <Slider label="Monthly Expenses (today)" value={monthly} onChange={setMonthly} min={10000} max={500000} step={5000} prefix="₹" />
-        <Slider label="Expected Return" value={rate} onChange={setRate} min={1} max={MAX_RETURN} step={0.5} suffix="% p.a." sublabel="Max 12%" />
+        <Slider label="Expected Return" value={rate} onChange={setRate} min={1} max={30} step={0.5} suffix="% p.a." />
         <Slider label="Inflation Rate" value={inflation} onChange={setInflation} min={3} max={10} step={0.5} suffix="% p.a." />
         <div className="grid grid-cols-2 gap-3 mt-4">
           <ResultCard label="Retirement Corpus Needed" value={formatCurrency(result.corpus)} />
@@ -298,7 +297,7 @@ function StepUpSIPCalculator() {
       <div>
         <Slider label="Starting Monthly SIP" value={monthly} onChange={setMonthly} min={500} max={200000} step={500} prefix="₹" />
         <Slider label="Annual Step-Up" value={stepUp} onChange={setStepUp} min={0} max={25} suffix="%" />
-        <Slider label="Expected Return" value={rate} onChange={setRate} min={1} max={MAX_RETURN} step={0.5} suffix="% p.a." sublabel="Max 12%" />
+        <Slider label="Expected Return" value={rate} onChange={setRate} min={1} max={30} step={0.5} suffix="% p.a." />
         <Slider label="Investment Period" value={years} onChange={setYears} min={1} max={30} suffix=" years" />
         <div className="grid grid-cols-2 gap-3 mt-4">
           <ResultCard label="Total Invested" value={formatCurrency(final.invested)} />
@@ -371,7 +370,7 @@ function ChildEducationCalculator() {
       <Slider label="Current Education Cost" value={currentCost} onChange={setCurrentCost} min={100000} max={50000000} step={100000} prefix="₹" />
       <Slider label="Years Until Education" value={years} onChange={setYears} min={1} max={25} suffix=" years" />
       <Slider label="Education Inflation" value={inflation} onChange={setInflation} min={4} max={15} step={0.5} suffix="%" />
-      <Slider label="Expected Return" value={rate} onChange={setRate} min={1} max={MAX_RETURN} step={0.5} suffix="% p.a." sublabel="Max 12%" />
+      <Slider label="Expected Return" value={rate} onChange={setRate} min={1} max={30} step={0.5} suffix="% p.a." />
       <div className="grid grid-cols-2 gap-3 mt-4">
         <ResultCard label="Future Education Cost" value={formatCurrency(result.futureCost)} />
         <ResultCard label="Required Monthly SIP" value={formatCurrency(result.sipRequired)} />
@@ -466,7 +465,7 @@ function SWPCalculator() {
       <div>
         <Slider label="Initial Corpus" value={corpus} onChange={setCorpus} min={500000} max={100000000} step={100000} prefix="₹" />
         <Slider label="Monthly Withdrawal" value={withdrawal} onChange={setWithdrawal} min={5000} max={500000} step={1000} prefix="₹" />
-        <Slider label="Expected Return" value={rate} onChange={setRate} min={1} max={MAX_RETURN} step={0.5} suffix="% p.a." sublabel="Max 12%" />
+        <Slider label="Expected Return" value={rate} onChange={setRate} min={1} max={30} step={0.5} suffix="% p.a." />
         <Slider label="Withdrawal Period" value={years} onChange={setYears} min={1} max={40} suffix=" years" />
         <div className="grid grid-cols-2 gap-3 mt-4">
           <ResultCard label="Total Withdrawn" value={formatCurrency(final.withdrawn)} />
@@ -504,7 +503,16 @@ const tabs = [
 
 /* ─── MAIN PAGE ─── */
 const ToolsPage = () => {
+  const [searchParams] = useSearchParams();
   const [activeTab, setActiveTab] = useState("sip");
+
+  useEffect(() => {
+    const tab = searchParams.get("tab");
+    if (tab && tabs.find((t) => t.id === tab)) {
+      setActiveTab(tab);
+    }
+  }, [searchParams]);
+
   const active = tabs.find((t) => t.id === activeTab)!;
   const ActiveComponent = active.component;
 
@@ -585,8 +593,8 @@ const ToolsPage = () => {
           {/* Disclaimer */}
           <div className="mt-6 border-l-4 border-negative/60 bg-negative/5 rounded-r-lg p-4">
             <p className="font-sans text-xs text-navy-700 leading-relaxed">
-              ⚠️ Calculator results are for illustration purposes only and should not be considered investment advice or guaranteed returns.
-              Actual investment performance may vary depending on market conditions. Maximum assumed return: 12% p.a.
+              Calculator results are for illustration purposes only and should not be considered investment advice or guaranteed returns.
+              Actual investment performance may vary depending on market conditions.
               Mutual fund investments are subject to market risks. Read all scheme-related documents carefully before investing.
               ARN-345665 | NOT a SEBI-Registered Investment Adviser.
             </p>

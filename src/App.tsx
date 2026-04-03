@@ -11,6 +11,15 @@ import ToolsPage from "./pages/ToolsPage";
 import ContactPage from "./pages/ContactPage";
 import StubPage from "@/components/StubPage";
 import NotFound from "./pages/NotFound";
+import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
+import CommissionDisclosurePage from "./pages/CommissionDisclosurePage";
+import FundSelectionPolicyPage from "./pages/FundSelectionPolicyPage";
+import InvestorGrievancePage from "./pages/InvestorGrievancePage";
+import RightsObligationsPage from "./pages/RightsObligationsPage";
+import DisclaimerPage from "./pages/DisclaimerPage";
+import TermsConditionsPage from "./pages/TermsConditionsPage";
+import ImportantLinksPage from "./pages/ImportantLinksPage";
+
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -32,17 +41,16 @@ const App = () => (
             <Route path="/services/estate-planning" element={<ServicesPage />} />
             <Route path="/services/loans" element={<ServicesPage />} />
             <Route path="/tools" element={<ToolsPage />} />
-            <Route path="/market-watch" element={<StubPage title="Market Watch" />} />
             <Route path="/testimonials" element={<StubPage title="Testimonials" />} />
             <Route path="/contact" element={<ContactPage />} />
-            <Route path="/disclaimer" element={<StubPage title="Disclaimer" badge="Legal" />} />
-            <Route path="/commission-disclosure" element={<StubPage title="Commission Disclosure" badge="Legal" />} />
-            <Route path="/fund-selection-policy" element={<StubPage title="Fund Selection Policy" badge="Legal" />} />
-            <Route path="/investor-grievance" element={<StubPage title="Investor Grievance" badge="Legal" />} />
-            <Route path="/rights-and-obligations" element={<StubPage title="Rights & Obligations" badge="Legal" />} />
-            <Route path="/privacy-policy" element={<StubPage title="Privacy Policy" badge="Legal" />} />
-            <Route path="/terms-and-conditions" element={<StubPage title="Terms & Conditions" badge="Legal" />} />
-            <Route path="/important-links" element={<StubPage title="Important Links" badge="Resources" />} />
+            <Route path="/disclaimer" element={<DisclaimerPage />} />
+            <Route path="/commission-disclosure" element={<CommissionDisclosurePage />} />
+            <Route path="/fund-selection-policy" element={<FundSelectionPolicyPage />} />
+            <Route path="/investor-grievance" element={<InvestorGrievancePage />} />
+            <Route path="/rights-and-obligations" element={<RightsObligationsPage />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+            <Route path="/terms-and-conditions" element={<TermsConditionsPage />} />
+            <Route path="/important-links" element={<ImportantLinksPage />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Layout>
