@@ -78,7 +78,7 @@ function SIPCalculator() {
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
       <div>
         <Slider label="Monthly SIP" value={monthly} onChange={setMonthly} min={500} max={200000} step={500} prefix="₹" />
-        <Slider label="Expected Return" value={rate} onChange={setRate} min={1} max={30} step={0.5} suffix="% p.a." />
+        <Slider label="Expected Return" value={rate} onChange={setRate} min={1} max={12} step={0.5} suffix="% p.a." />
         <Slider label="Investment Period" value={years} onChange={setYears} min={1} max={30} suffix=" years" />
         <div className="grid grid-cols-2 gap-3 mt-4">
           <ResultCard label="Total Invested" value={formatCurrency(final.invested)} />
@@ -123,7 +123,7 @@ function LumpsumCalculator() {
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
       <div>
         <Slider label="Investment Amount" value={amount} onChange={setAmount} min={10000} max={10000000} step={10000} prefix="₹" />
-        <Slider label="Expected Return" value={rate} onChange={setRate} min={1} max={30} step={0.5} suffix="% p.a." />
+        <Slider label="Expected Return" value={rate} onChange={setRate} min={1} max={12} step={0.5} suffix="% p.a." />
         <Slider label="Investment Period" value={years} onChange={setYears} min={1} max={30} suffix=" years" />
         <div className="grid grid-cols-2 gap-3 mt-4">
           <ResultCard label="Amount Invested" value={formatCurrency(amount)} />
@@ -171,7 +171,7 @@ function GoalCalculator() {
         <Slider label="Target Amount" value={goal} onChange={setGoal} min={100000} max={100000000} step={100000} prefix="₹" />
         <Slider label="Time Horizon" value={years} onChange={setYears} min={1} max={30} suffix=" years" />
         <Slider label="Current Savings" value={current} onChange={setCurrent} min={0} max={10000000} step={10000} prefix="₹" />
-        <Slider label="Expected Return" value={rate} onChange={setRate} min={1} max={30} step={0.5} suffix="% p.a." />
+        <Slider label="Expected Return" value={rate} onChange={setRate} min={1} max={12} step={0.5} suffix="% p.a." />
         <div className="grid grid-cols-2 gap-3 mt-4">
           <ResultCard label="Required Monthly SIP" value={formatCurrency(result.sipRequired)} />
           <ResultCard label="Or Lumpsum Needed" value={formatCurrency(result.lumpsumRequired)} />
@@ -233,7 +233,7 @@ function RetirementCalculator() {
         <Slider label="Current Age" value={age} onChange={setAge} min={18} max={55} suffix=" yrs" />
         <Slider label="Retirement Age" value={retireAge} onChange={setRetireAge} min={Math.max(age + 5, 45)} max={70} suffix=" yrs" />
         <Slider label="Monthly Expenses (today)" value={monthly} onChange={setMonthly} min={10000} max={500000} step={5000} prefix="₹" />
-        <Slider label="Expected Return" value={rate} onChange={setRate} min={1} max={30} step={0.5} suffix="% p.a." />
+        <Slider label="Expected Return" value={rate} onChange={setRate} min={1} max={12} step={0.5} suffix="% p.a." />
         <Slider label="Inflation Rate" value={inflation} onChange={setInflation} min={3} max={10} step={0.5} suffix="% p.a." />
         <div className="grid grid-cols-2 gap-3 mt-4">
           <ResultCard label="Retirement Corpus Needed" value={formatCurrency(result.corpus)} />
@@ -297,7 +297,7 @@ function StepUpSIPCalculator() {
       <div>
         <Slider label="Starting Monthly SIP" value={monthly} onChange={setMonthly} min={500} max={200000} step={500} prefix="₹" />
         <Slider label="Annual Step-Up" value={stepUp} onChange={setStepUp} min={0} max={25} suffix="%" />
-        <Slider label="Expected Return" value={rate} onChange={setRate} min={1} max={30} step={0.5} suffix="% p.a." />
+        <Slider label="Expected Return" value={rate} onChange={setRate} min={1} max={12} step={0.5} suffix="% p.a." />
         <Slider label="Investment Period" value={years} onChange={setYears} min={1} max={30} suffix=" years" />
         <div className="grid grid-cols-2 gap-3 mt-4">
           <ResultCard label="Total Invested" value={formatCurrency(final.invested)} />
@@ -370,7 +370,7 @@ function ChildEducationCalculator() {
       <Slider label="Current Education Cost" value={currentCost} onChange={setCurrentCost} min={100000} max={50000000} step={100000} prefix="₹" />
       <Slider label="Years Until Education" value={years} onChange={setYears} min={1} max={25} suffix=" years" />
       <Slider label="Education Inflation" value={inflation} onChange={setInflation} min={4} max={15} step={0.5} suffix="%" />
-      <Slider label="Expected Return" value={rate} onChange={setRate} min={1} max={30} step={0.5} suffix="% p.a." />
+      <Slider label="Expected Return" value={rate} onChange={setRate} min={1} max={12} step={0.5} suffix="% p.a." />
       <div className="grid grid-cols-2 gap-3 mt-4">
         <ResultCard label="Future Education Cost" value={formatCurrency(result.futureCost)} />
         <ResultCard label="Required Monthly SIP" value={formatCurrency(result.sipRequired)} />
@@ -465,7 +465,7 @@ function SWPCalculator() {
       <div>
         <Slider label="Initial Corpus" value={corpus} onChange={setCorpus} min={500000} max={100000000} step={100000} prefix="₹" />
         <Slider label="Monthly Withdrawal" value={withdrawal} onChange={setWithdrawal} min={5000} max={500000} step={1000} prefix="₹" />
-        <Slider label="Expected Return" value={rate} onChange={setRate} min={1} max={30} step={0.5} suffix="% p.a." />
+        <Slider label="Expected Return" value={rate} onChange={setRate} min={1} max={12} step={0.5} suffix="% p.a." />
         <Slider label="Withdrawal Period" value={years} onChange={setYears} min={1} max={40} suffix=" years" />
         <div className="grid grid-cols-2 gap-3 mt-4">
           <ResultCard label="Total Withdrawn" value={formatCurrency(final.withdrawn)} />
@@ -518,7 +518,6 @@ const ToolsPage = () => {
 
   return (
     <div>
-      {/* Hero */}
       <section className="bg-gradient-hero py-16">
         <div className="container text-center">
           <motion.span
@@ -549,7 +548,6 @@ const ToolsPage = () => {
 
       <section className="py-10 bg-gold-50">
         <div className="container">
-          {/* Category groups */}
           <div className="mb-8">
             {["Investment", "Protection", "Loan"].map((cat) => (
               <div key={cat} className="mb-3">
@@ -574,7 +572,6 @@ const ToolsPage = () => {
             ))}
           </div>
 
-          {/* Active calculator */}
           <motion.div
             key={activeTab}
             initial={{ opacity: 0, y: 10 }}
@@ -590,7 +587,6 @@ const ToolsPage = () => {
             <ActiveComponent />
           </motion.div>
 
-          {/* Disclaimer */}
           <div className="mt-6 border-l-4 border-negative/60 bg-negative/5 rounded-r-lg p-4">
             <p className="font-sans text-xs text-navy-700 leading-relaxed">
               Calculator results are for illustration purposes only and should not be considered investment advice or guaranteed returns.

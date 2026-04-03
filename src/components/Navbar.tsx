@@ -30,6 +30,7 @@ const navLinks = [
       { label: "Step-Up SIP", href: "/tools?tab=stepup" },
     ],
   },
+  { label: "Gallery", href: "/gallery" },
   { label: "Testimonials", href: "/testimonials" },
   { label: "Contact Us", href: "/contact" },
 ];
