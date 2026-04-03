@@ -23,14 +23,15 @@ const App = () => (
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/about-us" element={<AboutPage />} />
-            <Route path="/services/mutual-funds" element={<StubPage title="Mutual Fund Investments" />} />
-            <Route path="/services/insurance" element={<StubPage title="Insurance Services" />} />
-            <Route path="/services/goal-planning" element={<StubPage title="Goal-Based Planning" />} />
-            <Route path="/services/pms-aif" element={<StubPage title="PMS & AIF & SIF" />} />
-            <Route path="/services/global-investments" element={<StubPage title="Global Investments & GIFT City" />} />
-            <Route path="/services/estate-planning" element={<StubPage title="Will & Estate Planning" />} />
-            <Route path="/services/loans" element={<StubPage title="Loan & Financing Solutions" />} />
-            <Route path="/tools" element={<StubPage title="Financial Tools" description="SIP Calculator, Lumpsum Calculator, Goal Planner, Risk Profiler and more — coming soon." />} />
+            <Route path="/services" element={<ServicesPage />} />
+            <Route path="/services/mutual-funds" element={<ServicesPage />} />
+            <Route path="/services/insurance" element={<ServicesPage />} />
+            <Route path="/services/goal-planning" element={<ServicesPage />} />
+            <Route path="/services/pms-aif" element={<ServicesPage />} />
+            <Route path="/services/global-investments" element={<ServicesPage />} />
+            <Route path="/services/estate-planning" element={<ServicesPage />} />
+            <Route path="/services/loans" element={<ServicesPage />} />
+            <Route path="/tools" element={<ToolsPage />} />
             <Route path="/market-watch" element={<StubPage title="Market Watch" />} />
             <Route path="/testimonials" element={<StubPage title="Testimonials" />} />
             <Route path="/contact" element={<ContactPage />} />
