@@ -1,10 +1,9 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import {
-  BarChart3, Shield, Heart, Briefcase, Globe, Target,
-  FileText, Building, Search, ArrowRight, BookOpen,
-  Car, Users, Umbrella, GraduationCap, Home, Flame,
-  TrendingUp, Landmark, Lock, Unlock, HardHat,
+  BarChart3, Shield, Briefcase, Globe, Target,
+  FileText, Building, ArrowRight,
+  TrendingUp, Landmark, Calculator,
 } from "lucide-react";
 
 const fadeUp = {
@@ -17,7 +16,7 @@ const services = [
     id: "mutual-funds",
     icon: BarChart3,
     title: "Mutual Fund Investments",
-    description: "Assist investors in building diversified portfolios aligned with their goals, time horizon, and risk profile.",
+    description: "We assist investors in building diversified portfolios aligned with their goals, time horizon, and risk profile. Whether you are starting your investment journey or looking to optimise an existing portfolio, we help you select the right mutual fund schemes across categories — equity, debt, hybrid, index, and tax-saving funds. Our approach is systematic, goal-driven, and based on objective fund selection criteria.",
     details: [
       "Equity Funds — Large Cap, Mid Cap, Small Cap, Multi Cap, Flexi Cap",
       "Debt Funds — Liquid, Short Duration, Corporate Bond, Gilt",
@@ -27,13 +26,18 @@ const services = [
       "SIP, STP, SWP — Systematic investment, transfer & withdrawal plans",
     ],
     href: "/services/mutual-funds",
-    color: "from-blue-500/10 to-blue-600/5",
+    calculators: [
+      { label: "SIP Calculator", tab: "sip" },
+      { label: "Lumpsum Calculator", tab: "lumpsum" },
+      { label: "Step-Up SIP Calculator", tab: "stepup" },
+      { label: "SWP Calculator", tab: "swp" },
+    ],
   },
   {
     id: "insurance",
     icon: Shield,
     title: "Insurance & Risk Protection",
-    description: "Comprehensive insurance solutions to protect your family, health, and assets against life's uncertainties.",
+    description: "Before you invest, you must protect. Comprehensive insurance solutions safeguard your family, health, and assets against life's uncertainties. We help you evaluate coverage gaps and choose the right insurance products to ensure complete financial protection — so your investments remain intact when the unexpected happens.",
     details: [
       "Life Insurance — Term Plans, Endowment, ULIPs, Retirement Plans",
       "Health Insurance — Individual, Family Floater, Critical Illness, Top-Up",
@@ -42,13 +46,15 @@ const services = [
       "Group Insurance — Employee health & life cover for businesses",
     ],
     href: "/services/insurance",
-    color: "from-emerald-500/10 to-emerald-600/5",
+    calculators: [
+      { label: "Life Insurance Coverage Calculator", tab: "insurance" },
+    ],
   },
   {
     id: "goal-planning",
     icon: Target,
     title: "Goal-Based Investing",
-    description: "Planning investments aligned with your life's most important milestones and financial objectives.",
+    description: "Every investment should have a purpose. We help you map your life goals to specific investment strategies — whether it's your child's education, your retirement, buying a home, or building long-term wealth. By aligning your investments to time horizons and risk profiles, goal-based investing brings discipline and clarity to your financial journey.",
     details: [
       "Children's Education — Build a corpus for school, college & higher studies",
       "Retirement Planning — Ensure financial independence post-retirement",
@@ -58,27 +64,34 @@ const services = [
       "Marriage & Life Events — Plan for weddings and major celebrations",
     ],
     href: "/services/goal-planning",
-    color: "from-amber-500/10 to-amber-600/5",
+    calculators: [
+      { label: "Goal Planning Calculator", tab: "goal" },
+      { label: "Retirement Calculator", tab: "retirement" },
+      { label: "Child Education Calculator", tab: "education" },
+    ],
   },
   {
     id: "pms-aif",
     icon: Briefcase,
     title: "Portfolio Management & Alternative Investments",
-    description: "Access sophisticated investment vehicles for qualified investors seeking diversified portfolio strategies.",
+    description: "For qualified investors seeking exposure beyond traditional mutual funds, we provide access to Portfolio Management Services (PMS), Alternative Investment Funds (AIF), and Specialized Investment Funds (SIF). These products offer professional portfolio construction with higher minimum thresholds, and are suitable for investors with a longer time horizon and higher risk appetite.",
     details: [
       "Portfolio Management Services (PMS) — Min. ₹50L, professional management",
       "Alternative Investment Funds (AIF) — Min. ₹1Cr, Cat I/II/III funds",
       "Specialized Investment Funds (SIF) — Thematic & sector-specific strategies",
     ],
     href: "/services/pms-aif",
-    disclaimer: "PMS minimum investment: ₹50 Lakhs. AIF minimum: ₹1 Crore as per SEBI regulations.",
-    color: "from-purple-500/10 to-purple-600/5",
+    disclaimer: "PMS minimum investment: ₹50 Lakhs. AIF minimum: ₹1 Crore as per SEBI regulations. SIF involves relatively higher risk including potential loss of capital, liquidity risk and market volatility.",
+    calculators: [
+      { label: "Lumpsum Calculator", tab: "lumpsum" },
+      { label: "Goal Planning Calculator", tab: "goal" },
+    ],
   },
   {
     id: "global-investments",
     icon: Globe,
     title: "Global Investment Opportunities",
-    description: "Access to global allocation funds and GIFT City investment opportunities for eligible investors.",
+    description: "Diversify beyond Indian markets with international mutual funds and GIFT City investment opportunities. Global investing helps reduce country-specific concentration risk and gives you access to high-growth economies and sectors not available in India. We help eligible investors navigate regulatory requirements and choose suitable global allocation strategies.",
     details: [
       "International Mutual Funds — US, Europe, Emerging Markets exposure",
       "GIFT City Investments — Tax-efficient global investing from India",
@@ -86,13 +99,16 @@ const services = [
     ],
     href: "/services/global-investments",
     disclaimer: "International investments subject to FEMA regulations and currency risk.",
-    color: "from-cyan-500/10 to-cyan-600/5",
+    calculators: [
+      { label: "Lumpsum Calculator", tab: "lumpsum" },
+      { label: "Goal Planning Calculator", tab: "goal" },
+    ],
   },
   {
     id: "estate-planning",
     icon: FileText,
     title: "Will Writing & Estate Planning",
-    description: "Estate planning solutions including will writing and legacy planning to secure your family's future.",
+    description: "Wealth creation without wealth transfer planning is incomplete. We offer estate planning solutions including professionally drafted wills, succession planning, and legacy planning. Ensuring your nominees are correctly updated and your assets are distributed as per your wishes gives your family peace of mind and avoids legal complications.",
     details: [
       "Will Drafting — Legally sound will writing assistance",
       "Succession Planning — Smooth transfer of assets to beneficiaries",
@@ -100,13 +116,13 @@ const services = [
       "Nomination Review — Ensure all investments have correct nominees",
     ],
     href: "/services/estate-planning",
-    color: "from-rose-500/10 to-rose-600/5",
+    calculators: [],
   },
   {
     id: "loans",
     icon: Building,
     title: "Loan & Financing Solutions",
-    description: "Comprehensive financing support to meet your personal and business funding requirements.",
+    description: "Whether you need a home loan, a loan against your investment portfolio, or project funding for your business, we provide comprehensive financing support. We help you evaluate options, compare interest rates, and choose the right loan structure to meet your personal and business funding requirements without unnecessarily liquidating your investments.",
     details: [
       "Home Loans — Competitive rates for residential property purchase",
       "Loan Against Securities — Leverage your portfolio without liquidating",
@@ -115,7 +131,10 @@ const services = [
       "Project Funding — Capital for business expansion & projects",
     ],
     href: "/services/loans",
-    color: "from-orange-500/10 to-orange-600/5",
+    calculators: [
+      { label: "Home Loan EMI Calculator", tab: "homeloan" },
+      { label: "Loan Eligibility Calculator", tab: "loaneligibility" },
+    ],
   },
 ];
 
@@ -224,12 +243,22 @@ const ServicesPage = () => (
               </div>
             )}
 
-            <Link
-              to={svc.href}
-              className="inline-flex items-center gap-2 text-gold-600 font-display font-bold text-sm hover:text-gold-700 hover:gap-3 transition-all"
-            >
-              Learn More <ArrowRight size={16} />
-            </Link>
+            {/* Calculator buttons */}
+            {svc.calculators && svc.calculators.length > 0 && (
+              <div className="flex flex-wrap gap-3 mt-6">
+                {svc.calculators.map((calc) => (
+                  <Link
+                    key={calc.tab}
+                    to={`/tools?tab=${calc.tab}`}
+                    className="inline-flex items-center gap-2 bg-navy-800 text-gold-400 font-display font-bold text-xs px-5 py-2.5 rounded-lg hover:bg-navy-700 transition-colors"
+                  >
+                    <Calculator size={14} />
+                    {calc.label}
+                    <ArrowRight size={12} />
+                  </Link>
+                ))}
+              </div>
+            )}
           </motion.div>
         </div>
       </section>
@@ -274,7 +303,7 @@ const ServicesPage = () => (
         </div>
 
         <p className="text-center text-[11px] font-sans text-white/40 mb-6">
-          Calculator results are illustrative and do not guarantee returns. Maximum return assumption: 12% p.a.
+          Calculator results are illustrative and do not guarantee returns.
         </p>
 
         <div className="text-center">

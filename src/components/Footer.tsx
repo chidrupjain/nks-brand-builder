@@ -89,16 +89,16 @@ const Footer = () => (
       </div>
     </div>
 
-    {/* Service tags strip */}
+    {/* Service tags strip - NO emojis */}
     <div className="border-t border-gold-500/20 bg-gold-500/[0.06]">
       <div className="container py-3 flex flex-wrap justify-center gap-3 text-xs font-display font-bold text-gold-400 tracking-wider">
-        <span>📊 Mutual Fund</span><span className="text-gold-500/30">|</span>
-        <span>🛡️ General Insurance</span><span className="text-gold-500/30">|</span>
-        <span>💚 Life Insurance</span><span className="text-gold-500/30">|</span>
-        <span>📈 SIF</span><span className="text-gold-500/30">|</span>
-        <span>🎯 AIF</span><span className="text-gold-500/30">|</span>
-        <span>💼 PMS</span><span className="text-gold-500/30">|</span>
-        <span>🌐 Gift City</span>
+        <span>Mutual Fund</span><span className="text-gold-500/30">|</span>
+        <span>General Insurance</span><span className="text-gold-500/30">|</span>
+        <span>Life Insurance</span><span className="text-gold-500/30">|</span>
+        <span>SIF</span><span className="text-gold-500/30">|</span>
+        <span>AIF</span><span className="text-gold-500/30">|</span>
+        <span>PMS</span><span className="text-gold-500/30">|</span>
+        <span>Gift City</span>
       </div>
     </div>
 
