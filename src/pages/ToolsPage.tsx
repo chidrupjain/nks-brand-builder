@@ -590,6 +590,7 @@ const ToolsPage = () => {
           <div className="mt-6 border-l-4 border-negative/60 bg-negative/5 rounded-r-lg p-4">
             <p className="font-sans text-xs text-navy-700 leading-relaxed">
               Calculator results are for illustration purposes only and should not be considered investment advice or guaranteed returns.
+              All return figures shown are assumed rates for illustration only. Past performance is not indicative of future returns.
               Actual investment performance may vary depending on market conditions.
               Mutual fund investments are subject to market risks. Read all scheme-related documents carefully before investing.
               ARN-345665 | NOT a SEBI-Registered Investment Adviser.

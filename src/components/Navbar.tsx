@@ -32,6 +32,7 @@ const navLinks = [
   },
   { label: "Gallery", href: "/gallery" },
   { label: "Testimonials", href: "/testimonials" },
+  { label: "Grievance", href: "/grievance" },
   { label: "Contact Us", href: "/contact" },
 ];
 

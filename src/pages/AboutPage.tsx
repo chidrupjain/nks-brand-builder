@@ -1,22 +1,29 @@
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
 
 const AboutPage = () => (
   <>
     <section className="bg-gradient-hero py-20">
       <div className="container text-center">
         <span className="inline-flex bg-gold-500/20 border border-gold-500/40 text-gold-400 font-display font-bold text-[11px] tracking-[0.1em] px-4 py-1.5 rounded-pill mb-4">ARN-345665</span>
-        <h1 className="font-display font-black text-4xl md:text-5xl text-white">About NKS Investment Services</h1>
+        <h1 className="font-display font-black text-4xl md:text-5xl text-white mb-3">About NKS Investment Services</h1>
+        <p className="font-display font-bold text-lg text-gold-300">AMFI Registered Mutual Fund Distributor (ARN-345665)</p>
       </div>
     </section>
 
     <section className="py-16">
       <div className="container max-w-4xl">
+        {/* Regulatory Statement */}
+        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+          className="mb-8 bg-gold-50 border-2 border-gold-500/40 rounded-xl p-6 text-center"
+        >
+          <p className="font-display font-bold text-lg text-navy-800">We are an AMFI Registered Mutual Fund Distributor (ARN-345665).</p>
+          <p className="font-display font-bold text-base text-negative mt-1">We are NOT a SEBI-Registered Investment Adviser.</p>
+        </motion.div>
+
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="prose prose-lg max-w-none font-sans text-navy-700 space-y-6">
           <p>NKS Investment Services Private Limited is an AMFI-registered mutual fund distributor (ARN-345665) headquartered in Jaipur, Rajasthan. Incorporated on 16th September 2025, the company was founded with a clear vision: to make quality financial guidance accessible to every Indian family.</p>
           <p>We believe that wealth creation is not about timing the market — it's about time in the market. Our approach is rooted in disciplined, goal-based investing that aligns with each client's unique life objectives, risk appetite, and financial timeline.</p>
-          <p>Under the leadership of Directors Nikhil Shah and Karnika Jain, NKS offers a comprehensive suite of financial distribution services including Mutual Funds, General Insurance, Life Insurance, PMS, AIF, SIF, GIFT City investments, estate planning, and loan facilitation.</p>
+          <p>Under the leadership of Directors Nikhil Shah and Karnika Jain, NKS offers mutual fund distribution services including client risk profiling, scheme recommendation, portfolio review, and investor education.</p>
           <p>Every recommendation we make is guided by thorough client profiling, transparent fee disclosure, and a commitment to long-term relationships over short-term gains. We earn trail commission from Asset Management Companies — never from our clients directly.</p>
           <p>Our mission is simple: simplify financial decisions and guide every client toward financial freedom, one goal at a time.</p>
         </motion.div>
@@ -37,8 +44,8 @@ const AboutPage = () => (
             <p><strong>Address:</strong> Plot No.40, Flat 201, Prem Nagar Vistar, Durgapura, Jaipur-302018 RJ</p>
           </div>
           <div className="mt-4 flex gap-4 text-sm font-sans">
-            <span className="text-positive">✅ AMFI Registered MFD</span>
-            <span className="text-negative">❌ NOT SEBI-Registered Investment Adviser</span>
+            <span className="text-positive font-semibold">AMFI Registered MFD</span>
+            <span className="text-negative font-semibold">NOT SEBI-Registered Investment Adviser</span>
           </div>
         </motion.div>
 

@@ -20,6 +20,8 @@ import RightsObligationsPage from "./pages/RightsObligationsPage";
 import DisclaimerPage from "./pages/DisclaimerPage";
 import TermsConditionsPage from "./pages/TermsConditionsPage";
 import ImportantLinksPage from "./pages/ImportantLinksPage";
+import GrievancePage from "./pages/GrievancePage";
+import TermsOfUsePage from "./pages/TermsOfUsePage";
 
 const queryClient = new QueryClient();
 
@@ -52,7 +54,9 @@ const App = () => (
             <Route path="/rights-and-obligations" element={<RightsObligationsPage />} />
             <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
             <Route path="/terms-and-conditions" element={<TermsConditionsPage />} />
+            <Route path="/terms-of-use" element={<TermsOfUsePage />} />
             <Route path="/important-links" element={<ImportantLinksPage />} />
+            <Route path="/grievance" element={<GrievancePage />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Layout>
