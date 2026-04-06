@@ -3,6 +3,7 @@ import ComplianceStrip from "./ComplianceStrip";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import FloatingElements from "./FloatingElements";
+import WhatsAppButton from "./WhatsAppButton";
 import CookieConsent from "./CookieConsent";
 
 const Layout = ({ children }: { children: ReactNode }) => (
@@ -12,6 +13,7 @@ const Layout = ({ children }: { children: ReactNode }) => (
     <main className="flex-1">{children}</main>
     <Footer />
     <FloatingElements />
+    <WhatsAppButton />
     <CookieConsent />
   </div>
 );
