@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown, LogIn } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 
 const navLinks = [
@@ -9,12 +9,11 @@ const navLinks = [
   {
     label: "Services", href: "/services",
     children: [
-      { label: "Mutual Fund Investments", href: "/services/mutual-funds" },
-      { label: "Goal-Based Planning", href: "/services/goal-planning" },
-      { label: "Portfolio Review", href: "/services/portfolio-review" },
-      { label: "Risk Profiling", href: "/services/risk-profiling" },
-      { label: "Investor Education", href: "/services/investor-education" },
-      { label: "Free Portfolio Review", href: "/contact" },
+      { label: "Mutual Fund Investments", href: "/services" },
+      { label: "Goal-Based Planning", href: "/services" },
+      { label: "Portfolio Review", href: "/services" },
+      { label: "Risk Profiling", href: "/services" },
+      { label: "Investor Education", href: "/services" },
     ],
   },
   {
@@ -28,10 +27,11 @@ const navLinks = [
     ],
   },
   { label: "Gallery", href: "/gallery" },
-  { label: "Testimonials", href: "/testimonials" },
   { label: "Grievance", href: "/grievance" },
   { label: "Contact Us", href: "/contact" },
 ];
+
+const INVESTWELL_URL = "https://nikhilshah.investwell.app/app/#/broker/dashboard";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -100,12 +100,22 @@ const Navbar = () => {
           ))}
         </div>
 
-        <Link
-          to="/contact"
-          className="hidden lg:inline-flex bg-gradient-cta text-navy-800 font-display font-bold text-sm px-6 py-3 rounded-pill shadow-gold hover:shadow-lg transition-all"
-        >
-          Book Free Consultation
-        </Link>
+        <div className="hidden lg:flex items-center gap-3">
+          <a
+            href={INVESTWELL_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 border-2 border-navy-800 text-navy-800 font-display font-bold text-sm px-5 py-2.5 rounded-lg hover:bg-navy-800 hover:text-white transition-all"
+          >
+            <LogIn size={16} /> Login
+          </a>
+          <Link
+            to="/contact"
+            className="bg-gradient-cta text-navy-800 font-display font-bold text-sm px-6 py-3 rounded-lg shadow-gold hover:shadow-lg transition-all"
+          >
+            Book Free Consultation
+          </Link>
+        </div>
 
         {/* Mobile toggle */}
         <button className="lg:hidden text-navy-800 p-2" onClick={() => setMobileOpen(!mobileOpen)}>
@@ -135,9 +145,17 @@ const Navbar = () => {
               ))}
             </div>
           ))}
+          <a
+            href={INVESTWELL_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block mt-6 text-center border-2 border-gold-400 text-gold-400 font-display font-bold py-3 rounded-lg"
+          >
+            Login to InvestWell
+          </a>
           <Link
             to="/contact"
-            className="block mt-6 text-center bg-gradient-cta text-navy-800 font-display font-bold py-4 rounded-pill shadow-gold"
+            className="block mt-3 text-center bg-gradient-cta text-navy-800 font-display font-bold py-4 rounded-lg shadow-gold"
           >
             Book Free Consultation
           </Link>

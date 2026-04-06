@@ -3,10 +3,10 @@ import { useEffect, useState, useRef } from "react";
 import { Briefcase, Users, CalendarDays, Layers } from "lucide-react";
 
 const stats = [
-  { icon: Briefcase, label: "AUM Managed", value: "XX", suffix: " Cr+", prefix: "₹" },
+  { icon: Briefcase, label: "AUM Facilitated", value: "XX", suffix: " Cr+", prefix: "₹" },
   { icon: Users, label: "Happy Clients", value: "100", suffix: "+" },
   { icon: CalendarDays, label: "Established", value: "Sep 2025", isText: true },
-  { icon: Layers, label: "Service Categories", value: "7", suffix: "" },
+  { icon: Layers, label: "Service Categories", value: "6", suffix: "" },
 ];
 
 function CountUp({ end, duration = 1.5 }: { end: number; duration?: number }) {
@@ -59,7 +59,7 @@ const StatsSection = () => (
         ))}
       </div>
       <p className="text-center text-[11px] font-sans text-muted-foreground mt-4">
-        AUM figures indicative. Past performance ≠ future returns.
+        AUM figures indicative. Past performance is not indicative of future returns.
       </p>
     </div>
   </section>
