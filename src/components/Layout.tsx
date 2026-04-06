@@ -3,6 +3,7 @@ import ComplianceStrip from "./ComplianceStrip";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import FloatingElements from "./FloatingElements";
+import WhatsAppButton from "./WhatsAppButton";
 import CookieConsent from "./CookieConsent";
 
 const Layout = ({ children }: { children: ReactNode }) => (
