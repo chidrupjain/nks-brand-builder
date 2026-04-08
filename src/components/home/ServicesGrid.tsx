@@ -1,59 +1,76 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import {
-  BarChart3, Shield, Target, Briefcase, Globe, Building, ArrowRight,
-} from "lucide-react";
+import { BarChart3, Shield, Target, Briefcase, Globe, ScrollText } from "lucide-react";
+
+import mutualFundsImg from "@/assets/services/mutual-funds.jpg";
+import insuranceImg from "@/assets/services/insurance.jpg";
+import goalsImg from "@/assets/services/goals.jpg";
+import advancedImg from "@/assets/services/advanced.jpg";
+import globalImg from "@/assets/services/global.jpg";
+import estateImg from "@/assets/services/estate.jpg";
 
 const services = [
   {
     icon: BarChart3,
     title: "Mutual Fund Investments",
-    desc: "Invest in mutual funds aligned with your goals, risk profile, and time horizon.",
+    image: mutualFundsImg,
     href: "/services",
   },
   {
     icon: Shield,
     title: "Insurance & Risk Protection",
-    desc: "Facilitate insurance solutions to help manage financial risks and provide protection.",
+    image: insuranceImg,
     href: "/services",
   },
   {
     icon: Target,
-    title: "Goal-Based Investing Support",
-    desc: "Align investments with life goals such as retirement, education, and wealth creation.",
+    title: "Goal-Based Investing",
+    image: goalsImg,
     href: "/services",
   },
   {
     icon: Briefcase,
-    title: "PMS, AIF & Specialized Investments",
-    desc: "Facilitate access to advanced investment products for eligible investors. Higher risk products.",
+    title: "PMS, AIF & SIF",
+    image: advancedImg,
     href: "/services",
   },
   {
     icon: Globe,
-    title: "Global Investment Opportunities",
-    desc: "Access international investments and GIFT City opportunities (subject to eligibility).",
+    title: "Global Investments",
+    image: globalImg,
     href: "/services",
   },
   {
-    icon: Building,
-    title: "Loan & Financing Solutions",
-    desc: "Assist in exploring financing options through lending partners.",
+    icon: ScrollText,
+    title: "Estate Planning",
+    image: estateImg,
     href: "/services",
   },
 ];
 
 const ServicesGrid = () => (
-  <section className="py-20 bg-white">
+  <section className="py-20 bg-background">
     <div className="container">
-      <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-4">
-        <span className="text-gold-500 font-display font-bold text-xs tracking-[0.15em] uppercase">What We Offer</span>
-        <h2 className="font-display font-black text-3xl md:text-4xl text-navy-800 mt-2">Our Services</h2>
-      </motion.div>
-      <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}
-        className="text-center font-sans text-muted-foreground max-w-2xl mx-auto mb-12"
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="text-center mb-4"
       >
-        We assist individuals, families, and businesses in accessing suitable financial products and investment opportunities.
+        <span className="text-gold-500 font-display font-bold text-xs tracking-[0.15em] uppercase">
+          What We Offer
+        </span>
+        <h2 className="font-display font-black text-3xl md:text-4xl text-navy-800 mt-2">
+          Our Services
+        </h2>
+      </motion.div>
+      <motion.p
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        className="text-center font-sans text-muted-foreground max-w-2xl mx-auto mb-14"
+      >
+        Explore financial solutions designed for long-term growth.
       </motion.p>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -67,26 +84,35 @@ const ServicesGrid = () => (
           >
             <Link
               to={svc.href}
-              className="group block bg-white border border-border rounded-xl p-6 shadow-navy hover:border-gold-500 hover:shadow-gold hover:-translate-y-1 transition-all duration-300 relative overflow-hidden h-full"
+              className="group relative block h-64 rounded-2xl overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:shadow-xl"
             >
-              <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-gold scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
-              <div className="w-12 h-12 rounded-full bg-gold-100 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                <svc.icon size={24} className="text-gold-600" />
+              {/* Background image */}
+              <div
+                className="absolute inset-0 bg-cover bg-center transition-opacity duration-500 group-hover:opacity-0"
+                style={{ backgroundImage: `url(${svc.image})` }}
+              />
+              {/* Dark overlay (default) */}
+              <div className="absolute inset-0 bg-navy-900/70 transition-opacity duration-500 group-hover:opacity-0" />
+              {/* White overlay (hover) */}
+              <div className="absolute inset-0 bg-background opacity-0 group-hover:opacity-100 transition-opacity duration-500 border border-border rounded-2xl" />
+
+              {/* Content */}
+              <div className="relative z-10 flex flex-col items-center justify-center h-full gap-4 px-6">
+                {/* Icon */}
+                <div className="w-16 h-16 rounded-full flex items-center justify-center transition-colors duration-500 bg-white group-hover:bg-navy-800">
+                  <svc.icon
+                    size={28}
+                    className="transition-colors duration-500 text-navy-800 group-hover:text-white"
+                  />
+                </div>
+                {/* Title */}
+                <h3 className="font-display font-bold text-lg text-center transition-colors duration-500 text-white group-hover:text-navy-800">
+                  {svc.title}
+                </h3>
               </div>
-              <h3 className="font-display font-bold text-lg text-navy-800 mb-2">{svc.title}</h3>
-              <p className="font-sans text-sm text-muted-foreground mb-3">{svc.desc}</p>
-              <span className="text-gold-600 font-display font-bold text-sm inline-flex items-center gap-1 group-hover:gap-2 transition-all">
-                Learn More <ArrowRight size={14} />
-              </span>
             </Link>
           </motion.div>
         ))}
-      </div>
-
-      <div className="text-center mt-10">
-        <Link to="/services" className="bg-gradient-cta text-navy-800 font-display font-bold text-sm px-8 py-4 rounded-lg shadow-gold hover:shadow-lg hover:scale-[1.02] transition-all inline-flex items-center gap-2">
-          View All Services <ArrowRight size={16} />
-        </Link>
       </div>
     </div>
   </section>
