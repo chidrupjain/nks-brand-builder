@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { useEffect, useState, useRef } from "react";
 import { Users, Clock, TrendingUp, Award } from "lucide-react";
+import founderImg from "@/assets/founder-nikhil.png";
 
 function RollingCounter({
   end,
@@ -78,10 +79,8 @@ const FounderSection = () => (
           className="flex justify-center"
         >
           <div className="relative group">
-            <div className="w-72 h-72 md:w-80 md:h-80 rounded-2xl bg-navy-800 ring-4 ring-gold-500/30 flex items-center justify-center overflow-hidden transition-transform duration-500 group-hover:scale-105">
-              <span className="font-display font-black text-7xl text-gold-400">
-                NS
-              </span>
+            <div className="w-72 h-72 md:w-80 md:h-80 rounded-2xl bg-navy-800 ring-4 ring-gold-500/30 overflow-hidden transition-transform duration-500 group-hover:scale-105">
+              <img src={founderImg} alt="Nikhil Shah — Director & Founder" className="w-full h-full object-cover object-top" loading="lazy" width={320} height={320} />
             </div>
             <div className="absolute -bottom-4 -right-4 w-24 h-24 rounded-xl bg-gold-500/20 backdrop-blur-sm border border-gold-500/30 flex items-center justify-center">
               <span className="font-mono text-gold-400 text-xs text-center leading-tight">
