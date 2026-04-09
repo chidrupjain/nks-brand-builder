@@ -1,6 +1,7 @@
 import { ReactNode } from "react";
 import ComplianceStrip from "./ComplianceStrip";
 import Navbar from "./Navbar";
+import DisclaimerSection from "./DisclaimerSection";
 import Footer from "./Footer";
 import FloatingElements from "./FloatingElements";
 import WhatsAppButton from "./WhatsAppButton";
@@ -11,6 +12,7 @@ const Layout = ({ children }: { children: ReactNode }) => (
     <ComplianceStrip />
     <Navbar />
     <main className="flex-1">{children}</main>
+    <DisclaimerSection />
     <Footer />
     <FloatingElements />
     <WhatsAppButton />
