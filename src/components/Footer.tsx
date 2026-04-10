@@ -1,31 +1,27 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { MapPin, Phone, Mail, Clock } from "lucide-react";
 
 const quickLinks = [
   { label: "Privacy Policy", to: "/privacy-policy" },
-  { label: "Commission Disclosure", to: "/commission-disclosure" },
-  { label: "Fund Selection Policy", to: "/fund-selection-policy" },
-  { label: "Investor Grievance Redressal", to: "/investor-grievance" },
-  { label: "Disclaimer", to: "/disclaimer" },
   { label: "Terms & Conditions", to: "/terms-and-conditions" },
+  { label: "Disclaimer", to: "/disclaimer" },
+  { label: "Grievance Redressal", to: "/grievance" },
+  { label: "Investor Charter", to: "/investor-grievance" },
+  { label: "Commission Disclosure", to: "/commission-disclosure" },
   { label: "Important Links", to: "/important-links" },
+  { label: "About Us", to: "/about-us" },
+  { label: "Fund Selection & Suitability Policy", to: "/fund-selection-policy" },
   { label: "Rights & Obligations", to: "/rights-and-obligations" },
-  { label: "Terms of Use", to: "/terms-of-use" },
 ];
-
-const ScrollLink = ({ to, children }: { to: string; children: React.ReactNode }) => {
-  const handleClick = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-  return (
-    <Link to={to} onClick={handleClick} className="text-sm text-white/60 hover:text-gold-400 hover:translate-x-1 inline-block transition-all duration-300">
-      {children}
-    </Link>
-  );
-};
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const navigate = useNavigate();
+
+  const handleLinkClick = (to: string) => {
+    navigate(to);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   return (
     <footer className="text-white" style={{ backgroundColor: "#0B1F4A" }}>
@@ -59,7 +55,12 @@ const Footer = () => {
             <ul className="space-y-2.5">
               {quickLinks.map((link) => (
                 <li key={link.to}>
-                  <ScrollLink to={link.to}>{link.label}</ScrollLink>
+                  <button
+                    onClick={() => handleLinkClick(link.to)}
+                    className="text-sm text-white/60 hover:text-gold-400 hover:translate-x-1 inline-block transition-all duration-300"
+                  >
+                    {link.label}
+                  </button>
                 </li>
               ))}
             </ul>
@@ -93,27 +94,30 @@ const Footer = () => {
         <p className="text-xs text-white/60">AMFI Registered Mutual Fund Distributor</p>
         <p className="text-xs text-white/60 font-semibold">CIN: U66190RJ2025PTC106533</p>
         <p className="text-xs text-white/50">
-          <strong className="text-white/70">AMFI Registered Mutual Fund Distributor (ARN-345665)</strong> — Date of Registration: 17-Nov-2025 | Validity: 17-Nov-2025 to 16-Nov-2028
-        </p>
-        <p className="text-xs text-white/50">
-          <strong className="text-white/70">EUIN: E658208</strong> — Validity: 17-Nov-2025 to 06-Jun-2028
-        </p>
-        <p className="text-xs text-white/50">
-          <strong className="text-white/70">PAN:</strong> AAKCN8571C | <strong className="text-white/70">TAN:</strong> JPRN10231E
+          <strong className="text-white/70">ARN-345665</strong> — Date of Registration: 17-Nov-2025 | Validity: 17-Nov-2025 to 16-Nov-2028
         </p>
       </div>
 
       {/* Divider */}
       <div className="container"><div className="border-t border-white/10" /></div>
 
-      {/* Disclaimers */}
+      {/* Merged Disclaimer */}
       <div className="container py-6 space-y-3 text-xs text-white/50 text-center max-w-5xl mx-auto leading-relaxed">
-        <p className="font-semibold text-white/60">Disclaimers</p>
+        <p className="font-semibold text-white/60">Disclaimer</p>
         <p>
-          Mutual fund investments are subject to market risks. Please read the scheme information and other related documents carefully before investing. Past performance is not indicative of future returns. Please consider your specific investment requirements before choosing a fund, or designing a portfolio that suits your needs.
+          Mutual Fund investments are subject to market risks. Please read all scheme-related documents carefully before investing. Past performance is not indicative of future results. Investors should consider their specific investment requirements, risk tolerance, and financial goals before making any investment decisions.
         </p>
         <p>
-          NKS Investment Services Private Limited does not make any warranties or representations, express or implied, on products distributed. The company shall not be liable for any damages or losses, however caused, in connection with the use of, or on the reliance of its product or related services. Terms and conditions of the website are applicable. Investments in Securities markets are subject to market risks, read all the related documents carefully before investing.
+          NKS Investment Services Private Limited is an AMFI Registered Mutual Fund Distributor (ARN-345665). The company acts as a distributor of financial products and does not provide investment advisory services.
+        </p>
+        <p>
+          Investments in market-linked products are subject to risks including market volatility, liquidity risk, and potential loss of capital. Returns are not guaranteed or assured.
+        </p>
+        <p>
+          NKS Investment Services Private Limited is NOT a SEBI Registered Investment Adviser. The information on this website is for general informational purposes and should not be construed as investment advice.
+        </p>
+        <p>
+          For any Grievance, contact: Nikhil Shah (Grievance Officer) | Phone: +91 96940 67366 | Email: nksinvestmentservices@gmail.com | SEBI SCORES: <a href="https://scores.sebi.gov.in/" target="_blank" rel="noopener noreferrer" className="underline hover:text-white">scores.sebi.gov.in</a> | SMART ODR: <a href="https://smartodr.in" target="_blank" rel="noopener noreferrer" className="underline hover:text-white">smartodr.in</a>
         </p>
         <p className="font-semibold text-white/60">
           NKS Investment Services Private Limited operates in compliance with <strong className="text-white/80">SEBI</strong>, <strong className="text-white/80">AMFI</strong>, and applicable regulations.

@@ -1,6 +1,5 @@
 import { ReactNode } from "react";
 import Navbar from "./Navbar";
-import DisclaimerSection from "./DisclaimerSection";
 import Footer from "./Footer";
 import FloatingElements from "./FloatingElements";
 import WhatsAppButton from "./WhatsAppButton";
@@ -10,7 +9,6 @@ const Layout = ({ children }: { children: ReactNode }) => (
   <div className="min-h-screen flex flex-col">
     <Navbar />
     <main className="flex-1">{children}</main>
-    <DisclaimerSection />
     <Footer />
     <FloatingElements />
     <WhatsAppButton />

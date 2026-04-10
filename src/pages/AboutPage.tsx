@@ -102,15 +102,8 @@ const AboutPage = () => (
               disciplined investing.
             </p>
             <ul className="space-y-2.5">
-              {[
-                "Client-first approach",
-                "Focus on long-term financial goals",
-                "Encouraging informed decisions",
-              ].map((item) => (
-                <li
-                  key={item}
-                  className="flex items-center gap-2 font-sans text-sm text-navy-700"
-                >
+              {["Client-first approach", "Focus on long-term financial goals", "Encouraging informed decisions"].map((item) => (
+                <li key={item} className="flex items-center gap-2 font-sans text-sm text-navy-700">
                   <CheckCircle size={16} className="text-gold-500 shrink-0" />
                   {item}
                 </li>
@@ -135,15 +128,8 @@ const AboutPage = () => (
               responsible practices, transparency, and long-term relationships.
             </p>
             <ul className="space-y-2.5">
-              {[
-                "Promote financial awareness",
-                "Build long-term trust",
-                "Maintain ethical standards",
-              ].map((item) => (
-                <li
-                  key={item}
-                  className="flex items-center gap-2 font-sans text-sm text-navy-700"
-                >
+              {["Promote financial awareness", "Build long-term trust", "Maintain ethical standards"].map((item) => (
+                <li key={item} className="flex items-center gap-2 font-sans text-sm text-navy-700">
                   <CheckCircle size={16} className="text-gold-500 shrink-0" />
                   {item}
                 </li>
@@ -197,73 +183,6 @@ const AboutPage = () => (
               </motion.div>
             ))}
           </div>
-        </motion.div>
-      </div>
-    </section>
-
-    {/* Official Details */}
-    <section className="py-16 bg-muted/30">
-      <div className="container max-w-4xl">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="bg-background border border-border border-t-4 border-t-gold-500 rounded-xl p-8 shadow-sm"
-        >
-          <h3 className="font-display font-bold text-xl text-navy-800 mb-4">
-            Official Company Details
-          </h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 font-mono text-sm text-navy-700">
-            <p>
-              <strong>Company:</strong> NKS Investment Services Private Limited
-            </p>
-            <p>
-              <strong>CIN:</strong> U66190RJ2025PTC106533
-            </p>
-            <p>
-              <strong>PAN:</strong> AAKCN8571C
-            </p>
-            <p>
-              <strong>TAN:</strong> JPRN10231E
-            </p>
-            <p>
-              <strong>Incorporated:</strong> 16-Sep-2025
-            </p>
-            <p>
-              <strong>ARN:</strong> 345665 (Valid: 17-Nov-2025 to 16-Nov-2028)
-            </p>
-            <p>
-              <strong>EUIN:</strong> E658208 (Valid: 17-Nov-2025 to 06-Jun-2028)
-            </p>
-            <p>
-              <strong>Address:</strong> Plot No.40, Flat 201, Prem Nagar
-              Vistar, Durgapura, Jaipur-302018 RJ
-            </p>
-          </div>
-          <div className="mt-4 flex flex-wrap gap-4 text-sm font-sans">
-            <span className="text-positive font-semibold">
-              AMFI Registered MFD
-            </span>
-            <span className="text-negative font-semibold">
-              NOT SEBI-Registered Investment Adviser
-            </span>
-          </div>
-        </motion.div>
-
-        {/* Compliance */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mt-6 border border-gold-500/30 rounded-xl p-6"
-        >
-          <p className="font-sans text-sm text-muted-foreground leading-relaxed">
-            NKS Investment Services Pvt. Ltd. (ARN-345665) is an AMFI-registered
-            Mutual Fund Distributor. The company is NOT registered as a SEBI
-            Investment Adviser. Services provided are limited to distribution
-            only. Trail commission is earned from Asset Management Companies.
-            Commission details are available on request.
-          </p>
         </motion.div>
       </div>
     </section>

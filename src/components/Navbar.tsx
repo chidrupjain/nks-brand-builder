@@ -1,33 +1,15 @@
 import { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
-import { Menu, X, ChevronDown, LogIn } from "lucide-react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Menu, X, LogIn } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 
 const navLinks = [
   { label: "Home", href: "/" },
   { label: "About Us", href: "/about-us" },
-  {
-    label: "Services", href: "/services",
-    children: [
-      { label: "Mutual Fund Investments", href: "/services" },
-      { label: "Goal-Based Planning", href: "/services" },
-      { label: "Portfolio Review", href: "/services" },
-      { label: "Risk Profiling", href: "/services" },
-      { label: "Investor Education", href: "/services" },
-    ],
-  },
-  {
-    label: "Tools", href: "/tools",
-    children: [
-      { label: "SIP Calculator", href: "/tools?tab=sip" },
-      { label: "Lumpsum Calculator", href: "/tools?tab=lumpsum" },
-      { label: "Goal Planner", href: "/tools?tab=goal" },
-      { label: "Retirement Calculator", href: "/tools?tab=retirement" },
-      { label: "Step-Up SIP", href: "/tools?tab=stepup" },
-    ],
-  },
+  { label: "Services", href: "/services" },
+  { label: "Tools", href: "/tools" },
   { label: "Gallery", href: "/gallery" },
-  { label: "Grievance", href: "/grievance" },
+  { label: "Blog", href: "/blog" },
   { label: "Contact Us", href: "/contact" },
 ];
 
@@ -36,8 +18,8 @@ const INVESTWELL_URL = "https://nikhilshah.investwell.app/app/#/broker/dashboard
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const location = useLocation();
+  const navigate = useNavigate();
   const isMobile = useIsMobile();
 
   useEffect(() => {
@@ -48,13 +30,17 @@ const Navbar = () => {
 
   useEffect(() => {
     setMobileOpen(false);
-    setOpenDropdown(null);
   }, [location.pathname]);
 
+  const handleNavClick = (href: string) => {
+    navigate(href);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
-    <nav className={`sticky top-9 z-[100] transition-all duration-300 ${scrolled ? "bg-white shadow-navy" : "bg-white/97 backdrop-blur"} border-b border-navy-100`}>
+    <nav className={`sticky top-0 z-[100] transition-all duration-300 ${scrolled ? "bg-white shadow-navy" : "bg-white"} border-b border-navy-100`}>
       <div className="container flex items-center justify-between h-[72px]">
-        <Link to="/">
+        <Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
           <img
             src="/assets/nks-logo.png"
             alt="NKS Investment Services Private Limited — AMFI Registered ARN-345665"
@@ -65,38 +51,18 @@ const Navbar = () => {
         {/* Desktop Nav */}
         <div className="hidden lg:flex items-center gap-1">
           {navLinks.map((link) => (
-            <div
+            <button
               key={link.label}
-              className="relative group"
-              onMouseEnter={() => link.children && setOpenDropdown(link.label)}
-              onMouseLeave={() => setOpenDropdown(null)}
+              onClick={() => handleNavClick(link.href)}
+              className={`px-3 py-2 font-display text-[13px] font-semibold transition-colors relative ${
+                location.pathname === link.href ? "text-gold-500" : "text-navy-800 hover:text-gold-600"
+              }`}
             >
-              <Link
-                to={link.href}
-                className={`px-3 py-2 font-display text-[13px] font-semibold transition-colors flex items-center gap-1 ${
-                  location.pathname === link.href ? "text-gold-500" : "text-navy-800 hover:text-gold-600"
-                }`}
-              >
-                {link.label}
-                {link.children && <ChevronDown className="w-3 h-3" />}
-              </Link>
+              {link.label}
               {location.pathname === link.href && (
                 <div className="absolute bottom-0 left-3 right-3 h-0.5 bg-gold-500" />
               )}
-              {link.children && openDropdown === link.label && (
-                <div className="absolute top-full left-0 w-64 bg-white rounded-lg shadow-navy-lg border border-navy-100 border-t-[3px] border-t-gold-500 p-2 z-50">
-                  {link.children.map((child) => (
-                    <Link
-                      key={child.href + child.label}
-                      to={child.href}
-                      className="block px-3 py-2 text-sm font-sans text-navy-800 hover:bg-gold-50 hover:text-gold-700 rounded-md transition-colors"
-                    >
-                      {child.label}
-                    </Link>
-                  ))}
-                </div>
-              )}
-            </div>
+            </button>
           ))}
         </div>
 
@@ -109,12 +75,12 @@ const Navbar = () => {
           >
             <LogIn size={16} /> Login
           </a>
-          <Link
-            to="/contact"
+          <button
+            onClick={() => handleNavClick("/contact")}
             className="bg-gradient-cta text-navy-800 font-display font-bold text-sm px-6 py-3 rounded-lg shadow-gold hover:shadow-lg transition-all"
           >
-            Book Free Consultation
-          </Link>
+            Reach Us
+          </button>
         </div>
 
         {/* Mobile toggle */}
@@ -125,25 +91,15 @@ const Navbar = () => {
 
       {/* Mobile menu */}
       {mobileOpen && (
-        <div className="lg:hidden fixed inset-0 top-[108px] bg-navy-800 z-50 overflow-y-auto p-6">
+        <div className="lg:hidden fixed inset-0 top-[72px] bg-navy-800 z-50 overflow-y-auto p-6">
           {navLinks.map((link) => (
-            <div key={link.label}>
-              <Link
-                to={link.href}
-                className="block py-3 text-lg font-display font-bold text-gold-400 border-b border-navy-700"
-              >
-                {link.label}
-              </Link>
-              {link.children?.map((child) => (
-                <Link
-                  key={child.href + child.label}
-                  to={child.href}
-                  className="block py-2 pl-4 text-sm font-sans text-white/80"
-                >
-                  {child.label}
-                </Link>
-              ))}
-            </div>
+            <button
+              key={link.label}
+              onClick={() => handleNavClick(link.href)}
+              className="block w-full text-left py-3 text-lg font-display font-bold text-gold-400 border-b border-navy-700"
+            >
+              {link.label}
+            </button>
           ))}
           <a
             href={INVESTWELL_URL}
@@ -153,12 +109,12 @@ const Navbar = () => {
           >
             Login to InvestWell
           </a>
-          <Link
-            to="/contact"
-            className="block mt-3 text-center bg-gradient-cta text-navy-800 font-display font-bold py-4 rounded-lg shadow-gold"
+          <button
+            onClick={() => handleNavClick("/contact")}
+            className="block w-full mt-3 text-center bg-gradient-cta text-navy-800 font-display font-bold py-4 rounded-lg shadow-gold"
           >
-            Book Free Consultation
-          </Link>
+            Reach Us
+          </button>
         </div>
       )}
     </nav>

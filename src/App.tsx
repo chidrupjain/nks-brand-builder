@@ -10,7 +10,8 @@ import ServicesPage from "./pages/ServicesPage";
 import ToolsPage from "./pages/ToolsPage";
 import ContactPage from "./pages/ContactPage";
 import GalleryPage from "./pages/GalleryPage";
-import StubPage from "@/components/StubPage";
+import BlogPage from "./pages/BlogPage";
+import BlogPostPage from "./pages/BlogPostPage";
 import NotFound from "./pages/NotFound";
 import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
 import CommissionDisclosurePage from "./pages/CommissionDisclosurePage";
@@ -36,16 +37,10 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/about-us" element={<AboutPage />} />
             <Route path="/services" element={<ServicesPage />} />
-            <Route path="/services/mutual-funds" element={<ServicesPage />} />
-            <Route path="/services/insurance" element={<ServicesPage />} />
-            <Route path="/services/goal-planning" element={<ServicesPage />} />
-            <Route path="/services/pms-aif" element={<ServicesPage />} />
-            <Route path="/services/global-investments" element={<ServicesPage />} />
-            <Route path="/services/estate-planning" element={<ServicesPage />} />
-            <Route path="/services/loans" element={<ServicesPage />} />
             <Route path="/tools" element={<ToolsPage />} />
             <Route path="/gallery" element={<GalleryPage />} />
-            <Route path="/testimonials" element={<StubPage title="Testimonials" />} />
+            <Route path="/blog" element={<BlogPage />} />
+            <Route path="/blog/:slug" element={<BlogPostPage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/disclaimer" element={<DisclaimerPage />} />
             <Route path="/commission-disclosure" element={<CommissionDisclosurePage />} />

@@ -37,11 +37,11 @@ const CommissionDisclosurePage = () => (
 
           <div>
             <h2 className="font-display font-bold text-xl text-navy-800 mb-3">How Commission Works</h2>
-            <p className="text-sm">When you invest in a Regular Plan mutual fund through NKS Investment Services Private Limited, the AMC pays us a trail commission. This commission is a percentage of your invested amount, paid by the AMC from the scheme's Total Expense Ratio (TER). This commission does NOT increase your investment cost — it is already included in the scheme's NAV. Direct Plans of the same scheme have a lower expense ratio because they do not include distributor commission. You may choose to invest in Direct Plans directly through AMC websites or apps without any distributor involvement.</p>
+            <p className="text-sm">When you invest in a Regular Plan mutual fund through NKS Investment Services Private Limited, the AMC pays us a trail commission. This commission is a percentage of your invested amount, paid by the AMC from the scheme's Base Expense Ratio (BER). This commission does NOT increase your investment cost — it is already included in the scheme's NAV. Direct Plans of the same scheme have a lower expense ratio because they do not include distributor commission. You may choose to invest in Direct Plans directly through AMC websites or apps without any distributor involvement.</p>
           </div>
 
           <div>
-            <h2 className="font-display font-bold text-xl text-navy-800 mb-3">Trail Commission Structure (Indicative Range)</h2>
+            <h2 className="font-display font-bold text-xl text-navy-800 mb-3">Base Expense Ratio (Indicative Range)</h2>
             <div className="overflow-x-auto rounded-lg border border-border">
               <table className="w-full text-xs">
                 <thead>
@@ -76,7 +76,7 @@ const CommissionDisclosurePage = () => (
             <ol className="list-decimal list-inside text-sm space-y-2">
               <li>NKS Investment Services Private Limited receives only trail commission from AMCs. We do not accept any upfront commission, incentive commission, or one-time payments from any AMC.</li>
               <li>Investors may refer to their Consolidated Account Statement (CAS) issued by CAMS or KFintech, which displays the actual total commission paid to distributors for the investor's investments.</li>
-              <li>Commissions are paid directly by the respective AMCs and are included in the Total Expense Ratio (TER) of the scheme. The commission does not increase the investor's cost — it comes from the AMC's expense ratio.</li>
+              <li>Commissions are paid directly by the respective AMCs and are included in the Base Expense Ratio (BER) of the scheme. The commission does not increase the investor's cost — it comes from the AMC's expense ratio.</li>
               <li>NKS Investment Services Private Limited does not receive any remuneration, gift, incentive trip, or non-cash benefit from any AMC or associate that could result in a conflict of interest.</li>
               <li>Investors may choose to invest in Direct Plans directly through AMC websites or apps without distributor involvement. Direct Plans have lower expense ratios as they do not include distributor commission.</li>
               <li>Our scheme recommendations are based on objective criteria (performance, risk, suitability) as documented in our Fund Selection Policy, and are never influenced by commission rates.</li>
