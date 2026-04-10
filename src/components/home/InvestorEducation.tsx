@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
-import { TrendingUp, PieChart, AlertTriangle } from "lucide-react";
+import { Link } from "react-router-dom";
+import { TrendingUp, PieChart, AlertTriangle, ArrowRight } from "lucide-react";
 
 const topics = [
   {
@@ -46,6 +47,23 @@ const InvestorEducation = () => (
           </motion.div>
         ))}
       </div>
+
+      {/* Explore All Articles CTA */}
+      <motion.div
+        initial={{ opacity: 0, y: 16 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="text-center mt-10"
+      >
+        <Link
+          to="/blog"
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          className="inline-flex items-center gap-2 font-display font-bold text-sm px-8 py-3.5 rounded-[10px] transition-all duration-300 hover:scale-105 hover:brightness-90"
+          style={{ backgroundColor: "#C8A94E", color: "#0f172a" }}
+        >
+          Explore All Articles <ArrowRight size={16} />
+        </Link>
+      </motion.div>
 
       <p className="text-center text-[11px] font-sans text-white/40 mt-8">
         For educational purposes only. Not investment advice. Consult a SEBI-registered Investment Adviser for personalised guidance.

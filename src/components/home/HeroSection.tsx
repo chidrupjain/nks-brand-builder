@@ -14,7 +14,6 @@ const fadeUp = {
 
 const HeroSection = () => (
   <section className="relative min-h-[92vh] bg-gradient-hero overflow-hidden">
-    {/* Animated gradient overlay */}
     <div className="absolute inset-0 opacity-[0.06]" style={{
       backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 200'%3E%3Crect x='50' y='80' width='30' height='120' fill='white'/%3E%3Crect x='100' y='40' width='25' height='160' fill='white'/%3E%3Crect x='140' y='100' width='35' height='100' fill='white'/%3E%3Crect x='200' y='20' width='20' height='180' fill='white'/%3E%3Crect x='250' y='60' width='40' height='140' fill='white'/%3E%3Crect x='320' y='30' width='22' height='170' fill='white'/%3E%3Crect x='380' y='70' width='30' height='130' fill='white'/%3E%3Crect x='440' y='50' width='28' height='150' fill='white'/%3E%3Crect x='500' y='90' width='35' height='110' fill='white'/%3E%3Crect x='560' y='40' width='20' height='160' fill='white'/%3E%3Crect x='620' y='60' width='32' height='140' fill='white'/%3E%3Crect x='680' y='80' width='25' height='120' fill='white'/%3E%3Crect x='730' y='50' width='30' height='150' fill='white'/%3E%3C/svg%3E")`,
       backgroundRepeat: "repeat-x",
@@ -60,7 +59,7 @@ const HeroSection = () => (
               Start SIP <ArrowRight size={16} />
             </Link>
             <Link to="/contact" className="border-2 border-white/30 text-white font-display font-bold text-sm px-8 py-4 rounded-lg hover:bg-white/10 hover:border-white/50 transition-all">
-              Book Free Consultation
+              Reach Us
             </Link>
           </motion.div>
 
