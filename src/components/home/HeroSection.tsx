@@ -55,7 +55,7 @@ const HeroSection = () => (
           <motion.div custom={4} variants={fadeUp} initial="hidden" animate="visible"
             className="flex flex-wrap gap-4 mb-8"
           >
-            <Link to="/tools?tab=sip" className="bg-gradient-cta text-navy-800 font-display font-bold text-sm px-8 py-4 rounded-lg shadow-gold hover:shadow-lg hover:scale-[1.03] transition-all inline-flex items-center gap-2">
+            <Link to="/calculator?tab=sip" className="bg-gradient-cta text-navy-800 font-display font-bold text-sm px-8 py-4 rounded-lg shadow-gold hover:shadow-lg hover:scale-[1.03] transition-all inline-flex items-center gap-2">
               Start SIP <ArrowRight size={16} />
             </Link>
             <Link to="/contact" className="border-2 border-white/30 text-white font-display font-bold text-sm px-8 py-4 rounded-lg hover:bg-white/10 hover:border-white/50 transition-all">

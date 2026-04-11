@@ -14,6 +14,11 @@ const quickLinks = [
   { label: "Rights & Obligations", to: "/rights-and-obligations" },
 ];
 
+const externalLinks = [
+  { label: "Complete Your KYC", href: "https://www.camsonline.com/Investors/Service-requests/KYC" },
+  { label: "Download Complaint Form", href: "/NKS_Investor_Complaint_Form.pdf" },
+];
+
 const Footer = () => {
   const currentYear = new Date().getFullYear();
   const navigate = useNavigate();
@@ -61,6 +66,18 @@ const Footer = () => {
                   >
                     {link.label}
                   </button>
+                </li>
+              ))}
+              {externalLinks.map((link) => (
+                <li key={link.href}>
+                  <a
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm text-white/60 hover:text-gold-400 hover:translate-x-1 inline-block transition-all duration-300"
+                  >
+                    {link.label}
+                  </a>
                 </li>
               ))}
             </ul>

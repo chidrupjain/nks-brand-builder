@@ -5,11 +5,11 @@ import childImg from "@/assets/goals/child-planning.jpg";
 import retirementImg from "@/assets/goals/retirement.jpg";
 
 const calculators = [
-  { label: "SIP Calculator", href: "/tools" },
-  { label: "Lumpsum Calculator", href: "/tools" },
-  { label: "Step-Up SIP", href: "/tools" },
-  { label: "Goal Planner", href: "/tools" },
-  { label: "Retirement Planner", href: "/tools" },
+  { label: "SIP Calculator", href: "/calculator" },
+  { label: "Lumpsum Calculator", href: "/calculator" },
+  { label: "Step-Up SIP", href: "/calculator" },
+  { label: "Goal Planner", href: "/calculator" },
+  { label: "Retirement Planner", href: "/calculator" },
 ];
 
 interface GoalCardProps {
@@ -32,7 +32,7 @@ const GoalCard = ({ image, title, desc, cta }: GoalCardProps) => (
       </h3>
       <p className="font-sans text-sm text-muted-foreground mb-4">{desc}</p>
       <Link
-        to="/tools"
+        to="/calculator"
         className="inline-flex items-center gap-2 font-display font-bold text-sm text-navy-800 bg-gold-100 hover:bg-gold-300 px-5 py-2.5 rounded-lg transition-colors w-fit"
       >
         {cta} <ArrowRight size={14} />
@@ -93,7 +93,7 @@ const PlanYourGoals = () => (
           ))}
 
           <Link
-            to="/tools"
+            to="/calculator"
             className="mt-3 flex items-center justify-center gap-2 px-5 py-3 rounded-full border-2 border-navy-800 font-display font-bold text-sm text-navy-800 transition-all duration-300 hover:bg-navy-800 hover:text-white"
           >
             View All Calculators <ArrowRight size={14} />

@@ -41,8 +41,8 @@ const ToolsPreview = () => (
       </p>
 
       <div className="text-center">
-        <Link to="/tools" className="bg-gradient-cta text-navy-800 font-display font-bold text-sm px-8 py-4 rounded-lg shadow-gold hover:shadow-lg transition-all inline-flex items-center gap-2">
-          Open All Financial Tools <ArrowRight size={16} />
+        <Link to="/calculator" className="bg-gradient-cta text-navy-800 font-display font-bold text-sm px-8 py-4 rounded-lg shadow-gold hover:shadow-lg transition-all inline-flex items-center gap-2">
+          Open All Calculators <ArrowRight size={16} />
         </Link>
       </div>
     </div>
