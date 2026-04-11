@@ -487,17 +487,101 @@ function SWPCalculator() {
   );
 }
 
+/* ─── CAR LOAN EMI ─── */
+function CarLoanEMICalculator() {
+  const [principal, setPrincipal] = useState(800000);
+  const [rate, setRate] = useState(9);
+  const [tenure, setTenure] = useState(5);
+
+  const result = useMemo(() => {
+    const r = rate / 100 / 12;
+    const n = tenure * 12;
+    const emi = principal * r * Math.pow(1 + r, n) / (Math.pow(1 + r, n) - 1);
+    const totalPayment = emi * n;
+    return { emi: Math.round(emi), totalPayment: Math.round(totalPayment), totalInterest: Math.round(totalPayment - principal) };
+  }, [principal, rate, tenure]);
+
+  return (
+    <div>
+      <Slider label="Car Loan Amount" value={principal} onChange={setPrincipal} min={100000} max={50000000} step={50000} prefix="₹" />
+      <Slider label="Interest Rate" value={rate} onChange={setRate} min={5} max={18} step={0.1} suffix="% p.a." />
+      <Slider label="Tenure" value={tenure} onChange={setTenure} min={1} max={7} suffix=" years" />
+      <div className="grid grid-cols-3 gap-3 mt-4">
+        <ResultCard label="Monthly EMI" value={formatCurrency(result.emi)} />
+        <ResultCard label="Total Interest" value={formatCurrency(result.totalInterest)} />
+        <ResultCard label="Total Payment" value={formatCurrency(result.totalPayment)} />
+      </div>
+    </div>
+  );
+}
+
+/* ─── SIP + SWP COMBINED ─── */
+function SIPSWPCalculator() {
+  const [monthly, setMonthly] = useState(10000);
+  const [sipYears, setSipYears] = useState(15);
+  const [sipRate, setSipRate] = useState(12);
+  const [withdrawal, setWithdrawal] = useState(30000);
+  const [swpRate, setSwpRate] = useState(8);
+  const [swpYears, setSwpYears] = useState(20);
+
+  const result = useMemo(() => {
+    const r1 = sipRate / 100 / 12;
+    const n1 = sipYears * 12;
+    const corpus = monthly * ((Math.pow(1 + r1, n1) - 1) / r1) * (1 + r1);
+    const totalInvested = monthly * n1;
+
+    let balance = corpus;
+    const r2 = swpRate / 100 / 12;
+    let totalWithdrawn = 0;
+    let lastYear = swpYears;
+    for (let m = 0; m < swpYears * 12 && balance > 0; m++) {
+      balance = balance * (1 + r2) - withdrawal;
+      totalWithdrawn += withdrawal;
+      if (balance <= 0) { lastYear = Math.ceil((m + 1) / 12); break; }
+    }
+    return {
+      corpus: Math.round(corpus),
+      totalInvested: Math.round(totalInvested),
+      totalWithdrawn: Math.round(totalWithdrawn),
+      remainingBalance: Math.max(0, Math.round(balance)),
+      corpusLastsYears: balance > 0 ? swpYears : lastYear,
+    };
+  }, [monthly, sipYears, sipRate, withdrawal, swpRate, swpYears]);
+
+  return (
+    <div>
+      <p className="font-display font-bold text-sm text-navy-700 mb-3 border-b border-border pb-2">Phase 1 — SIP Accumulation</p>
+      <Slider label="Monthly SIP" value={monthly} onChange={setMonthly} min={500} max={200000} step={500} prefix="₹" />
+      <Slider label="SIP Period" value={sipYears} onChange={setSipYears} min={1} max={30} suffix=" years" />
+      <Slider label="Expected Return (SIP)" value={sipRate} onChange={setSipRate} min={1} max={12} step={0.5} suffix="% p.a." />
+      <p className="font-display font-bold text-sm text-navy-700 mb-3 mt-4 border-b border-border pb-2">Phase 2 — SWP Withdrawal</p>
+      <Slider label="Monthly Withdrawal" value={withdrawal} onChange={setWithdrawal} min={5000} max={500000} step={1000} prefix="₹" />
+      <Slider label="Expected Return (SWP)" value={swpRate} onChange={setSwpRate} min={1} max={12} step={0.5} suffix="% p.a." />
+      <Slider label="Withdrawal Period" value={swpYears} onChange={setSwpYears} min={1} max={40} suffix=" years" />
+      <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 mt-4">
+        <ResultCard label="Corpus Built" value={formatCurrency(result.corpus)} />
+        <ResultCard label="Total Invested" value={formatCurrency(result.totalInvested)} />
+        <ResultCard label="Total Withdrawn" value={formatCurrency(result.totalWithdrawn)} />
+        <ResultCard label="Remaining Balance" value={formatCurrency(result.remainingBalance)} />
+        <ResultCard label="Corpus Lasts" value={`${result.corpusLastsYears} yrs`} />
+      </div>
+    </div>
+  );
+}
+
 /* ─── TABS CONFIG ─── */
 const tabs = [
   { id: "sip", label: "SIP", icon: BarChart3, component: SIPCalculator, category: "Investment" },
   { id: "lumpsum", label: "Lumpsum", icon: TrendingUp, component: LumpsumCalculator, category: "Investment" },
   { id: "stepup", label: "Step-Up SIP", icon: ArrowUpRight, component: StepUpSIPCalculator, category: "Investment" },
+  { id: "sipswp", label: "SIP + SWP", icon: BarChart3, component: SIPSWPCalculator, category: "Investment" },
   { id: "goal", label: "Goal Planner", icon: Target, component: GoalCalculator, category: "Investment" },
   { id: "retirement", label: "Retirement", icon: Landmark, component: RetirementCalculator, category: "Investment" },
   { id: "swp", label: "SWP", icon: Calculator, component: SWPCalculator, category: "Investment" },
   { id: "insurance", label: "Life Cover", icon: Shield, component: InsuranceCoverageCalculator, category: "Protection" },
   { id: "education", label: "Child Education", icon: GraduationCap, component: ChildEducationCalculator, category: "Protection" },
   { id: "homeloan", label: "Home Loan EMI", icon: Home, component: HomeLoanEMICalculator, category: "Loan" },
+  { id: "carloan", label: "Car Loan EMI", icon: Home, component: CarLoanEMICalculator, category: "Loan" },
   { id: "loaneligibility", label: "Loan Eligibility", icon: Calculator, component: LoanEligibilityCalculator, category: "Loan" },
 ];
 
