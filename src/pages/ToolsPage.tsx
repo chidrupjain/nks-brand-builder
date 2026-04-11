@@ -609,7 +609,7 @@ const ToolsPage = () => {
             animate={{ opacity: 1, y: 0 }}
             className="inline-flex bg-gold-500/20 border border-gold-500/40 text-gold-400 font-display font-bold text-[11px] tracking-[0.1em] px-4 py-1.5 rounded-pill mb-4"
           >
-            FINANCIAL PLANNING TOOLS
+            FINANCIAL CALCULATORS
           </motion.span>
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
@@ -617,7 +617,7 @@ const ToolsPage = () => {
             transition={{ delay: 0.1 }}
             className="font-display font-black text-4xl md:text-5xl text-white mb-3"
           >
-            Plan Smart. Invest Smarter.
+            Financial Calculators
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}

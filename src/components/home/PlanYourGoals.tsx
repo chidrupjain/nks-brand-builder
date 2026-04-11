@@ -5,11 +5,11 @@ import childImg from "@/assets/goals/child-planning.jpg";
 import retirementImg from "@/assets/goals/retirement.jpg";
 
 const calculators = [
-  { label: "SIP Calculator", href: "/tools" },
-  { label: "Lumpsum Calculator", href: "/tools" },
-  { label: "Step-Up SIP", href: "/tools" },
-  { label: "Goal Planner", href: "/tools" },
-  { label: "Retirement Planner", href: "/tools" },
+  { label: "SIP Calculator", href: "/calculator" },
+  { label: "Lumpsum Calculator", href: "/calculator" },
+  { label: "Step-Up SIP", href: "/calculator" },
+  { label: "Goal Planner", href: "/calculator" },
+  { label: "Retirement Planner", href: "/calculator" },
 ];
 
 interface GoalCardProps {
