@@ -297,7 +297,7 @@ const ServicesPage = () => {
                 </Link>
                 {activeSvc.calculator && (
                   <Link
-                    to={`/tools?tab=${activeSvc.calculator.tab}`}
+                    to={`/calculator?tab=${activeSvc.calculator.tab}`}
                     className="inline-flex items-center gap-2 border-2 border-navy-800 text-navy-800 font-display font-bold text-sm px-6 py-3 rounded-lg hover:bg-navy-800 hover:text-white transition-all duration-300"
                   >
                     <Calculator size={16} />

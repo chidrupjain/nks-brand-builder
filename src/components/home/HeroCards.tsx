@@ -16,7 +16,7 @@ const HeroCards = () => (
       <p className="font-sans text-sm text-navy-600 mb-2">
         ₹5,000/mo × 10yr @ 12% = <span className="font-mono font-bold text-navy-800">₹11.6L*</span>
       </p>
-      <a href="/tools?tab=sip" className="text-gold-600 text-sm font-display font-bold hover:text-gold-700 inline-flex items-center gap-1">
+      <a href="/calculator?tab=sip" className="text-gold-600 text-sm font-display font-bold hover:text-gold-700 inline-flex items-center gap-1">
         Calculate →
       </a>
       <p className="text-[10px] text-muted-foreground mt-1">*Illustration only. Not guaranteed.</p>
